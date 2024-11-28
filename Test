@@ -1,0 +1,30 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+i = 1
+print("Kører loop nummer " + str(i))
+
+nummer = 1  # Initialize the variable 'nummer'
+nummer = nummer + 1
+
+email = "JakobKvejborglol+" + str(nummer) + "@gmail.com"
+url = "https://www.dofactory.com/html/button/id"
+
+service = Service("C:\\Program Files\\chromedriver.exe")
+driver = webdriver.Chrome(service=service)
+
+driver.get(url)
+
+# Wait for the button to be clickable and click it
+id_button = WebDriverWait(driver, 20).until(
+    EC.element_to_be_clickable((By.ID, "alert-button"))
+)
+id_button.click()
+print("Button id clicked")
+
+# Keep the browser open
+input("Press Enter to close the browser...")
